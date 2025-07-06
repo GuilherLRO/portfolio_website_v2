@@ -1,0 +1,15 @@
+tunnel: YOUR_TUNNEL_UUID
+credentials-file: /Users/guilherme/.cloudflared/YOUR_TUNNEL_UUID.json
+
+ingress:
+  # Route your domain to local server
+  - hostname: your-domain.com
+    service: http://localhost:8080
+  # Route subdomain
+  - hostname: portfolio.your-domain.com  
+    service: http://localhost:8080
+  # Catch-all rule (required)
+  - service: http_status:404
+
+# Optional: Enable metrics
+metrics: 0.0.0.0:9090 
